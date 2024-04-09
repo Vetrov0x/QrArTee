@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         progress += 1;
         loadingScreen.querySelector(
           ".loading-text"
-        ).textContent = `Loading a cool thing... ${progress}%`;
+        ).textContent = `Loading...${progress}%`;
         setTimeout(simulateProgress, 100);
       }
     };

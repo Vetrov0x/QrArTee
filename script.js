@@ -120,3 +120,23 @@ AFRAME.registerComponent('clickable-redirect', {
       //this.el.emit('targetFound');
     }
   });
+
+  //Video Loading
+  window.onload = function() {
+    document.querySelectorAll('video').forEach(video => {
+      video.play().catch(error => console.error('Error attempting to play video:', error));
+    });
+  };
+
+  // Intersection Observer for videos
+  let observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.play().catch(error => console.error('Error attempting to play video:', error));
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('video').forEach(video => {
+    observer.observe(video);
+  });

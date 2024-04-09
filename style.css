@@ -41,7 +41,7 @@ html, body {
 }
 
 .loading-image {
-    max-width: 16vw; /* Adjust size as necessary */
+    max-width: 10vw; /* Adjust size as necessary */
     max-height: auto;
     margin-bottom: 3rem; /* Adds some space between the image and the text */
 }
