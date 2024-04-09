@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Metamodern Scan</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://unpkg.com/aframe-fonts/dist/aframe-fonts.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="icon" href="icon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a href="https://www.linkedin.com/in/ivan-vetrov-25869b99/" target="_blank" class="profile-link">
+      <img
+        src="https://cdn4.cdn-telegram.org/file/vWa5sCgc750PuYka8FLUWU02Zu0f5TLxxmSa2G2w9BdrDij0OtNPgwM5mb83QCM5DCwoIz-AR_naQhqGUZF5iJeX2LY8MWhaGnMzjfy-iO6VHTrVBN800_95ogvIxrfTyaZA3GYiySTFZZzFPtLw3K1LpyWxeNl7LoaWHJgOFl-YqwQxyZdyuS-1SYXKeVFR8m6kEnOm1mDf7EmUNdVClhSWqEt1bISpoVnCgk0sPDGiHVxqBLGQJuaU5CF0sJFT2PZWRoT2BlPICP4H8mhrldUkZstIGYoy-VCzCdBthJdElCmLlsMoUWUTSiLvtNH6boKbif0JoYWCNoeWdS7VfA.jpg"
+        alt="Profile Picture"
+      />
+      <span>Created by Vetrov0x</span>
+    </a>
+    
+    <div class="loading-screen" id="loading-screen">
+      <img src="target.png" class="loading-image" alt="Loading" />
+      <span class="loading-text"></span>
+    </div>
+    
+
+      <div id="example-scanning-overlay" class="hidden">
+	      <div class="inner">
+	        <img src="./target.png"/>
+	        <div class="scanline"></div>
+	      </div>
+      </div>
+
+    
+
+    <a-scene
+      mindar-image="imageTargetSrc: ./targets.mind; filterMinCF:.001; filterBeta: 0.001; "
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false">
+
+      <a-assets>
+        <img id="card" src="./target.png" />
+        <video id="I" src="./mini-jeff.webm" autoplay loop playsinline webkit-playsinline></video>
+        <a-asset-item id="avatarModel" src="./JeffCube.glb"></a-asset-item>
+        <a-asset-item id="Title" src="./metamodern-company-title.glb"></a-asset-item>        
+      </a-assets>
+      <a-camera position="0 0 0" look-controls="enabled: false"  cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable" ></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0" mytarget>
+        <a-entity position=" 0 -.35 0" pannel="dynamicText: Website" class="clickable" clickable-redirect data-url="https://www.metamodern.company"> </a-entity>
+        <a-entity position=" 0 -.5 0" pannel="dynamicText: Blog" class="clickable" clickable-redirect data-url="https://www.linkedin.com/company/metamodern-company"> </a-entity>
+        <a-entity position=" 0 -.65 0" pannel="dynamicText: Metaverse" class="clickable" clickable-redirect data-url="https://www.metamodern.space"> </a-entity>
+        <a-gltf-model id="avatar" rotation="0 0 0" position="0 0 0" scale=".2 .2 .2" src="#avatarModel"></a-gltf-model>
+        <a-gltf-model id="avatar" rotation="80 0 0" position="0 .4 0" scale=".4 .4 .4" src="#Title"></a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1" mytarget>
+        <a-video src="#I" ></a-video>
+      </a-entity>
+
+    </a-scene>
+
+    <script src="loading.js"></script>
+  </body>
+</html>
+
